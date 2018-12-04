@@ -28,7 +28,7 @@ def get_heatmap_of_county():
                     (SELECT generate_series(floor(ST_Xmin(bbx.bx))::int, ceiling(ST_Xmax(bbx.bx))::int, 0.05) as x FROM bbx) xs
                     CROSS JOIN 
                     (SELECT bx from bbx) as county) as hm
-                    JOIN accidents_texas a ON ST_DWithin(ST_SetSRID(a.way, 4326)::geography, hm.pnt::geography, 3000)
+                    JOIN accidents_texas a ON ST_DWithin(ST_SetSRID(a.way, 4326)::geography, hm.pnt::geography, 6000)
                     WHERE ST_Contains(hm.county, hm.pnt)
                     GROUP BY hm.pnt""", (county_id,))
 
@@ -89,7 +89,7 @@ def get_accidents_on_road():
 
     cur.execute("""WITH closest_road AS 
                     (SELECT CASE 
-                        WHEN road.name is null THEN road.way
+                        WHEN road.ref is null THEN road.way
                         ELSE (SELECT ST_Union(l1.way) as way FROM planet_osm_line l1 WHERE l1.ref = road.ref)
                         END
                         FROM(
@@ -105,7 +105,7 @@ def get_accidents_on_road():
                         'properties', json_build_object(
 
                         )
-                    ) FROM accident a
+                    ) FROM accidents_texas a
                     CROSS JOIN (SELECT way FROM closest_road) as cr
                     WHERE ST_DWithin(ST_SetSRID(a.way::geography, 4326), cr.way::geography, 100)
                     UNION ALL
