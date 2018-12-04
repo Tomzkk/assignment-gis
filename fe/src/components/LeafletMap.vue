@@ -32,7 +32,7 @@
                             :max-zoom="9"
                             :minOpacity="0.2"
                             :blur="25"
-                            :gradient="{.2:'blue',.4:'cyan',.6:'lime',.7:'yellow', .8: 'orange', 1:'red'}"/>            
+                            :gradient="{.0:'blue',.2:'cyan',.4:'lime',.5:'yellow', 7: 'orange', 1:'red'}"/>            
         </l-map>
     </div>
 </template>
@@ -92,6 +92,7 @@
         },
         methods: {
             setMarker: function (event) {
+                console.log(event.latlng.lng + ', ' + event.latlng.lat)
                 this.marker = event.latlng
             },
             updateDistance: function (val) {
@@ -125,6 +126,7 @@
                     for (var i = 0; i < response.data.length; i++){
                         var geojs = response.data[i]
                         this.geostuff.push(geojs)
+                        console.log(geojs['geometry']['coordinates'])
                     }
                 })
             },
@@ -215,6 +217,6 @@
 @import '~leaflet/dist/leaflet.css';
 
     .map {
-        height: 500px;
+        height: 100vh;
     }
 </style>

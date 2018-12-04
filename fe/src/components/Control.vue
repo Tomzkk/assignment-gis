@@ -1,35 +1,38 @@
 <template>
     <div>
-        <b-form-group>
-            <b-form-row>
-                <p>Search distance</p>
-                <div class="slidecontainer">
-                    <input v-model="distance" type="range" min="10" max="25000" value="10" class="slider" id="myRange"/>
-                </div>
-            <b-form-input v-model="distance"
-                    type="number"
-                    placeholder="Search distance"></b-form-input>
-            </b-form-row>
-            <b-form-row>
-                <b-button
-                    @click="accidentsInProximity">
-                    Proximity
-                </b-button>
-            </b-form-row>
-            <b-form-row>
-                <b-button
-                    @click="accidentsOnRoad">
-                    Road
-                </b-button>
-            </b-form-row>
+        <b-form-group class="group">
+            <b-card>
+                <b-form-row>
+                    Search distance
+                    <div class="slidecontainer">
+                        <input v-model="distance" type="range" min="10" max="25000" value="10" class="slider" id="myRange"/>
+                    </div>
+                <b-form-input v-model="distance"
+                        type="number"
+                        placeholder="Search distance"></b-form-input>
+                </b-form-row>
+                <b-form-row>
+                    <b-button
+                        @click="accidentsInProximity">
+                        Proximity
+                    </b-button>
+                </b-form-row>
+                <b-form-row>
+                    <b-button
+                        @click="accidentsOnRoad">
+                        Road
+                    </b-button>
+                </b-form-row>
+            </b-card>
         </b-form-group>
         <b-form-group>
-            <b-button :pressed.sync="showingCounties" variant="primary">Show all counties</b-button>
-            <p>Pressed State: <strong>{{ showingCounties }}</strong></p>
-            <b-form-radio-group v-model="selectedMode">
-                <b-form-radio value="Accidents">Accidents in county</b-form-radio>
-                <b-form-radio value="Heatmap">County heatmap</b-form-radio>
-            </b-form-radio-group>
+            <b-card>
+                <b-button :pressed.sync="showingCounties" variant="primary">Show all counties</b-button>
+                <b-form-radio-group class="radio-group" v-model="selectedMode">
+                    <b-form-radio value="Accidents">Accidents in county</b-form-radio>
+                    <b-form-radio value="Heatmap">County heatmap</b-form-radio>
+                </b-form-radio-group>
+            </b-card>
         </b-form-group>
     </div>
 </template>
@@ -131,5 +134,22 @@
     border-radius: 50%;
     background: #39383a;
     cursor: pointer;
+}
+button {
+    margin: 5px 0 !important;
+    width:100%;
+}
+
+.card {
+    text-align: left;
+}
+
+.group {
+    margin-top: 10px;
+}
+
+
+.radio-group {
+    margin-top:20px !important;
 }
 </style>
