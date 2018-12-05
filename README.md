@@ -20,8 +20,13 @@ Build a map-based application, which lets the user see geo-based data on a map a
 
 Fill in (either in English, or in Slovak):
 
-**Application description**: `<fill in>`
+**Application description**: Application allows user to display car accidents that occurred in Texas during year 2017.
 
-**Data source**: `<fill in>`
+**Data source**: 
+- [Open Street Maps](https://www.openstreetmap.org/) - data of Texas
+- [Fatality Analysis Reporting System](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars) - accidents data
 
-**Technologies used**: `<fill in>`
+**Technologies used**: 
+- Vue.js, Leaflet, Bootstrap
+- Python, Flask
+- PostgreSQL with Postgis extension
