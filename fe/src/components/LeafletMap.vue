@@ -75,11 +75,11 @@
         props: {
             zoom: {
                 type: Number,
-                default: 5
+                default: 6
             },
             center: {
                 type: Array,
-                default: () => [30.683368, -99.301620]
+                default: () => [31.647, -97.699]
             },
             url: {
                 type: String,
@@ -99,6 +99,9 @@
                 this.distance = val
             },
             accidentsProximity: function (distance) {
+                if(marker == null){
+                    return null
+                }
                 this.geostuff.splice(0, this.geostuff.length)
                 this.$http.get("http://127.0.0.1:5000/accidentsProximity", {
                     params: {
@@ -115,6 +118,9 @@
                 })
             },
             accidentsOnRoad: function () {
+                if(marker == null){
+                    return null
+                }
                 this.geostuff.splice(0, this.geostuff.length)
                 this.$http.get("http://127.0.0.1:5000/accidentsOnRoad", {
                     params: {
