@@ -22,7 +22,7 @@ The application consists of following parts:
 - spatial database (postgreSQL with postgis extension)
 
 # Frontend
-The frontend application is a single page web applciation and was written in Vue.js. It's main intent is to display car accidents on roads and near them, so I modified visibility of roads in the map style and changed their color. To work with map I used [vue2leaflet](https://www.npmjs.com/package/@lulibrary/vue2-leaflet) library, which provides leaflet map components for Vue.js. Additionaly I use [Bootstrap-Vue](https://bootstrap-vue.js.org/) library for vue-friendly bootstrap components and [vue2-leaflet-heatmap](https://www.npmjs.com/package/vue2-leaflet-heatmap) library to display heatmaps.
+The frontend application is a single page web application and was written in Vue.js. It's main intent is to display car accidents on roads and near them, thus I modified visibility of roads in the map style and changed their color. To work with map I used [vue2leaflet](https://www.npmjs.com/package/@lulibrary/vue2-leaflet) library, which provides leaflet map components for Vue.js. Additionaly I use [Bootstrap-Vue](https://bootstrap-vue.js.org/) library for vue-friendly bootstrap components and [vue2-leaflet-heatmap](https://www.npmjs.com/package/vue2-leaflet-heatmap) library to display heatmaps.
 
 All relevant code is in folder *fe*/. Responsibilities of frontend code are:
 - side control panel allowing user to choose search distance and perform actions
@@ -37,7 +37,7 @@ It is responsible for querying geo data and responds with GeoJSON format. GeoJSO
 
 ## Data
 
-Data of accidents were retrieved from Fatality Analysis Reporting System ([FARS](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars)). These data were available in .csv format. In order to import these data into the database I first created table containing same columns as said .csv file and then [copied](http://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) them into the database. I created an indexes on geometry and geography in order to speed up the queries execution. 
+Data of accidents were retrieved from Fatality Analysis Reporting System ([FARS](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars)). These data were available in .csv format. In order to import these data into the database I first created table containing columns identical to said .csv file and then [copied](http://www.postgresqltutorial.com/import-csv-file-into-posgresql-table/) them into the database. I created an indexes on geometry and geography in order to speed up the queries execution. 
 Other data (roads, counties, texas itself) were retrieved from OSM, specifically by downloading .osm.pbf file of Texas from [here](https://download.geofabrik.de/north-america.html). I imported these data into the database using osm2pgsql and created indexes where it was needed to speed up the execution. 
 
 
