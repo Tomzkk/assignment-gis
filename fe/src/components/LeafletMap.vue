@@ -99,7 +99,7 @@
                 this.distance = val
             },
             accidentsProximity: function (distance) {
-                if(marker == null){
+                if(this.marker == null){
                     return null
                 }
                 this.geostuff.splice(0, this.geostuff.length)
@@ -110,7 +110,6 @@
                         distance : distance
                     }
                 }).then(function(response){
-                    alert(response.data.length)
                     for (var i = 0; i < response.data.length; i++){
                         var geojs = JSON.parse(response.data[i])
                         this.geostuff.push(geojs)
@@ -118,7 +117,7 @@
                 })
             },
             accidentsOnRoad: function () {
-                if(marker == null){
+                if(this.marker == null){
                     return null
                 }
                 this.geostuff.splice(0, this.geostuff.length)
@@ -160,7 +159,6 @@
                         county_id : this.counties[index]['properties']['county_id']
                     }
                 }).then(function(response){
-                    alert(response.data.length)
                     for (var i = 0; i < response.data.length; i++){
                         var geojs = response.data[i]
                         this.geostuff.push(geojs)

@@ -8,7 +8,13 @@ This application's main purpose is displaying fatal car accidents that happened 
 
 Application screenshots:
 
-![Screenshot](screenshot.png)
+![Screenshot](proximity_search.png)
+
+![Screenshot](road_search.png)
+
+![Screenshot](accidents_county.png)
+
+![Screenshot](heatmap_county.png)
 
 The application consists of following parts:
 - frontend web application client written in vue.js
